@@ -1,0 +1,23 @@
+hypercorn -b 0.0.0.0:6400 "ticketoverflow:create_app()"
+docker run -p 8000:8000 amazon/dynamodb-local
+docker run --name alpine-sqs -p 9324:9324 -p 9325:9325 -v /opt/alpine-sqs:/opt/custom roribio16/alpine-sqs:latest
+
+
+1 Worker 100 reqeusts ->
+
+
+Testing:
+1 CPU - 3 Workers gives -> 140 req/s 33680 total
+2 CPU - 3 workers gives - > 236 req/s 56940 total
+4 CPU - 3 workers gives - >269 req/s 64966 total
+
+2 CPU - 5 workers -> 210 req/s 50640 total
+4 CPU - 5 workers - 342 req/s 82597 total
+4 CPU - 5 workers ->
+
+4 CPU - 9 workers 323 req/s 77897 total
+4 CPU - 9 workers 376 req/s 90697 total  - Python 11
+
+http://ticketoverflow-1946380315.us-east-1.elb.amazonaws.com/
+
+docker run --net='host' -e TEST_HOST='http://ticketoverflow-847052372.us-east-1.elb.amazonaws.com/api/v1' ghcr.io/csse6400/ticketoverflow-load:latest general.js

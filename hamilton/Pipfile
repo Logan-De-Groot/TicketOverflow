@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask-sqlalchemy = "*"
+boto3 = "*"
+python-dotenv = "*"
+gunicorn = "*"
+eventlet = "*"
+gevent = "*"
+quart = "*"
+hypercorn = "*"
+redis = "*"
+aioboto3 = "*"
+celery = {extras = ["redis"], version = "*"}
+aiocache = {extras = ["redis"], version = "*"}
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"

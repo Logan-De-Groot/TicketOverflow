@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+   
+  app:
+    build:
+      context: .
+      dockerfile: hamilton.dockerfile
+    restart: always
+    ports:
+      - "6400:6400"
